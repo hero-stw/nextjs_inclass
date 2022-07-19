@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 
 const Home: NextPage = () => {
   const [formId, setFormId] = useState(0);
+  const [formTitle, setFormTitle] = useState("Product Form");
   const {
     register,
     handleSubmit,
@@ -62,8 +63,10 @@ const Home: NextPage = () => {
   };
 
   const getProductId = async (id: number) => {
-    reset(await getById(id));
+    const product = await getById(id);
+    reset(product);
     setFormId(id);
+    setFormTitle("Editing...");
   };
   return (
     <>
@@ -71,20 +74,25 @@ const Home: NextPage = () => {
         <div className="overflow-x-auto relative shadow-md sm:rounded-lg p-8 col-span-4">
           <form action="" className="form" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex items-center justify-between ">
-              <h1 className="text-2xl font-bold text-blue-800 mb-4">Add new</h1>
-              <button
-                className="mb-4 text-gray-400 text-sm"
-                onClick={() => {
-                  reset({
-                    name: "",
-                    price: 0,
-                    category: "",
-                  }),
-                    setFormId(0);
-                }}
-              >
-                Reset
-              </button>
+              <h1 className="text-2xl font-bold text-blue-800 mb-4">
+                {formTitle}
+              </h1>
+              {formTitle !== "Product Form" && formId != 0 && (
+                <button
+                  className="mb-4 text-gray-400 text-sm"
+                  onClick={() => {
+                    reset({
+                      name: "",
+                      price: 0,
+                      category: "",
+                    }),
+                      setFormId(0);
+                    setFormTitle("Add new");
+                  }}
+                >
+                  New product +
+                </button>
+              )}
             </div>
             <hr />
             <div className="mt-4">
