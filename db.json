@@ -11,6 +11,24 @@
       "price": "0124",
       "category": "Cate 2",
       "id": 2
+    },
+    {
+      "name": "Test Update",
+      "price": "324",
+      "category": "Cate 1",
+      "id": 3
+    },
+    {
+      "name": "Product C ",
+      "price": 34,
+      "category": "Cate 5",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "name": "Product D",
+      "price": 321,
+      "category": "Cate 4"
     }
   ]
 }

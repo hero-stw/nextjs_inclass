@@ -39,10 +39,10 @@ const Home: NextPage = () => {
     if (formId !== 0)
       update(formId, {
         name: data.name,
-        price: data.price,
+        price: +data.price,
         category: data.category,
       });
-    create(data);
+    create({ ...data, price: +data.price });
   };
 
   const handleDelete = (id: number) => {
